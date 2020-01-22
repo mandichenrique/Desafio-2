@@ -5,6 +5,12 @@
 #  - name: instala python 2
 #    raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
 
+    # do the actual apt-get dist-upgrade
+  #  - name: apt-get dist-upgrade
+  #    apt:
+    #    upgrade: dist # upgrade all packages to latest version
+
+
 - hosts: wordpress
 
   roles:
