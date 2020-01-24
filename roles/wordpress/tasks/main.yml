@@ -1,16 +1,15 @@
 ---
-- name: Diretorio principal
+- name: Cria Webroot
   file:
     state: directory
-    path: /var/www/
+    path: /srv/www/
     owner: root
     group: root
     mode: 0755
   become: yes
 
-
-- name: Checa wordpress  /var/www
-  stat: path=/var/www/{{server_hostname}}
+- name: Checa diretorio wordpress /srv/www
+  stat: path=/srv/www/{{server_hostname}}
   register: check_path
 
 - name: Download WordPress
@@ -21,7 +20,7 @@
   become: yes
   when: not check_path.stat.exists
 
-- name: Ext WordPress
+- name: extrai WordPress
   unarchive:
     src: /tmp/wordpress-{{ wp_version }}.tar.gz
     dest: /tmp
@@ -31,23 +30,23 @@
   become: yes
   when: not check_path.stat.exists
 
-- name: Move WordPress e instala os arquivos
-  command: mv /tmp/wordpress /var/www/{{server_hostname}}
+- name: move arquivo wordpress install files
+  command: mv /tmp/wordpress /srv/www/{{server_hostname}}
   become: yes
   when: not check_path.stat.exists
 
-- name: correção *random salts*
+- name: Fetch random salts for WordPress config
   local_action: command curl https://api.wordpress.org/secret-key/1.1/salt/
   register: "wp_salt"
   become: no
 
 - name: Add wp-config
-  template: "src=wp-config.php dest=/var/www/{{server_hostname}}/wp-config.php"
+  template: "src=wp-config.php dest=/srv/www/{{server_hostname}}/wp-config.php"
   become: yes
 
 - name: Update WordPress config file
   lineinfile:
-    dest: "/var/www/{{server_hostname}}/wp-config.php"
+    dest: "/srv/www/{{server_hostname}}/wp-config.php"
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
   with_items:

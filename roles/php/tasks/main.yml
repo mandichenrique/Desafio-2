@@ -1,29 +1,31 @@
 ---
 # tasks file for php
 
-- name: Instala php extensions
+- name: PHP | Install Ondrej PHP PPA
+  apt_repository: repo='ppa:ondrej/php' update_cache=yes
+  become: yes
+
+
+- name: Install php extensions
   apt:
     name: "{{ item }}"
     state: present
   become: yes
   with_items:
-    - php7.2-fpm
-    - php7.2-gd
-    - php7.2-ssh2
-    - php7.2-mysql
-    - php7.2-gd
-    - php7.2-imagick
-    - php7.2-recode
-    - php7.2-tidy
-    - php7.2-xmlrpc
+    - php7.0
+    - php7.0-mysql
+    - php7.0-gd
+    - php-ssh2
+    - php7.0-mcrypt
+    - php7.0-fpm
 
-- name: Configura php-fpm
-  replace: dest=/etc/php/7.2/fpm/php.ini regexp="(;cgi.fix_pathinfo=1)" replace="cgi.fix_pathinfo=0"
+- name: Setup php-fpm
+  replace: dest=/etc/php/7.0/fpm/php.ini regexp="(;cgi.fix_pathinfo=1)" replace="cgi.fix_pathinfo=0"
   notify:
     - restart nginx
   become: yes
 
-- name: Add php config
+- name: Add php settings
   template: src=../../nginx/templates/nginx-wp-common.conf dest=/etc/nginx/nginx-wp-common.conf owner=www-data group=www-data mode=0644
   notify:
     - restart nginx

@@ -2,6 +2,6 @@
 
   roles:
     - nginx
+    - wordpress
     - mysql
     - php
-    - wordpress

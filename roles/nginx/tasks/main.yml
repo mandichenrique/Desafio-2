@@ -1,19 +1,8 @@
 ---
 # tasks file for nginx
-- name: Pip Install
-  become: true
-  apt:
-    update_cache: yes
-    name: python3-pip
-    state: present
 
-- name: PyMySQL - Verificação
-  become: true
-  pip:
-    name: pymysql
-    state: present
 
-- name: Instala nginx
+- name: Install nginx
   apt: name={{ item }} state=present
   become: yes
   with_items:
@@ -26,7 +15,7 @@
     name: nginx
     state: started
 
-- name: Config nginx blog
+- name: Update nginx confs for WordPress + PHP
   template: "src=../templates/default-site.conf dest=/etc/nginx/sites-available/{{server_hostname}} owner=www-data group=www-data mode=0644"
   become: yes
 
