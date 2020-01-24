@@ -1,0 +1,2 @@
+[webservers]
+3.90.6.182 ansible_python_interpreter=/usr/bin/python3
