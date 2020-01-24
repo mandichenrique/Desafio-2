@@ -8,11 +8,10 @@ mysql_root_password: root
 
 auto_up_disable: true
 
-server_hostname: 18.206.155.81
+server_hostname: 54.81.69.25
 
 # WordPress Version
 wp_version: 4.7.5
 wp_sha1sum: fbe0ee1d9010265be200fe50b86f341587187302
-
 
 core_update_level: true
