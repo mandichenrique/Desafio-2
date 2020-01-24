@@ -1,10 +1,16 @@
 ---
 # tasks file for nginx
+- name: Pip Install
+  become: true
+  apt:
+    update_cache: yes
+    name: python-pip
+    state: present
 
 - name: PyMySQL - Verificação
-  become: true # needed if the other tasks are not played as root
-  apt:
-    name: python3-pymysql
+  become: true
+  pip:
+    name: pymysql
     state: present
 
 - name: Instala nginx

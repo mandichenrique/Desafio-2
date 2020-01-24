@@ -9,15 +9,10 @@ wp_db_password: wordpress
 
 auto_up_disable: true
 
-server_hostname: 54.174.43.216
+server_hostname: 3.88.16.44
 
 # WordPress Version
 wp_version: 4.7.5
 wp_sha1sum: fbe0ee1d9010265be200fe50b86f341587187302
 
-#Rever
-#Define Core Update Level
-#true  = Development, minor, and major updates are all enabled
-#false = Development, minor, and major updates are all disabled
-#minor = Minor updates are enabled, development, and major updates are disabled
 core_update_level: true
