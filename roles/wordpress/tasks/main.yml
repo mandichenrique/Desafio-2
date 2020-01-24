@@ -1,11 +1,13 @@
 ---
 - name: Diretorio principal
+  file:
     state: directory
     path: /var/www/
     owner: root
     group: root
     mode: 0755
   become: yes
+
 
 - name: Checa wordpress  /var/www
   stat: path=/var/www/{{server_hostname}}
