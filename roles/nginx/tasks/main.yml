@@ -4,7 +4,7 @@
   become: true
   apt:
     update_cache: yes
-    name: python-pip
+    name: python3-pip
     state: present
 
 - name: PyMySQL - Verificação
