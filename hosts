@@ -1,2 +1,2 @@
 [webservers]
-3.88.16.44 ansible_python_interpreter=/usr/bin/python2.7
+52.54.226.101 ansible_python_interpreter=/usr/bin/python2.7

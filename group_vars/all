@@ -9,7 +9,7 @@ wp_db_password: wordpress
 
 auto_up_disable: true
 
-server_hostname: 3.88.16.44
+server_hostname: 52.54.226.101
 
 # WordPress Version
 wp_version: 4.7.5
