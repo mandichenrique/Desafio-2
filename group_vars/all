@@ -8,7 +8,7 @@ mysql_root_password: root
 
 auto_up_disable: true
 
-server_hostname: 54.81.69.25
+server_hostname: 3.86.227.36
 
 # versão de download
 wp_version: 4.7.5
