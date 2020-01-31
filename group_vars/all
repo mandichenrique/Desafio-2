@@ -1,4 +1,4 @@
-# WordPress config
+# WordPress acessos
 wp_db_name: wordpress
 wp_db_user: wordpress
 wp_db_password: wordpress_db_password
@@ -10,7 +10,7 @@ auto_up_disable: true
 
 server_hostname: 54.81.69.25
 
-# WordPress Version
+# versão de download
 wp_version: 4.7.5
 wp_sha1sum: fbe0ee1d9010265be200fe50b86f341587187302
 
